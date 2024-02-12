@@ -8,7 +8,7 @@ app.use(express.json());
 
 const sequelize = new Sequelize(process.env.DB_URL, {
   dialect: "postgres",
-  logging: false,
+  // logging: false,
   dialectOptions: {
     ssl: {
       require: true,
