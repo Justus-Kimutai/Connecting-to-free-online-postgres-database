@@ -28,14 +28,22 @@ sequelize
 
 //   model schema
 const post = sequelize.define("post", {
-  title: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  content: {
+  phone: {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  region: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  village: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  }
 });
 
 app.get("/", (req, res) => {
@@ -43,9 +51,9 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create-post", async (req, res) => {
-  const { title, content } = req.body;
+  const { name, phone, region, village } = req.body;
   try {
-    const newPost = await post.create({ title, content });
+    const newPost = await post.create({ name, phone, region, village });
     res.json(newPost);
   } catch (err) {
     console.log(err);
@@ -64,3 +72,6 @@ app.get("/get-posts", async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+
+
+
